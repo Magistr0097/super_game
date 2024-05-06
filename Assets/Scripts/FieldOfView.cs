@@ -32,11 +32,9 @@ public class FieldOfView : MonoBehaviour
         float angle = startAngle;
         float angleIncrease = fovAngle / rayCount;
         
-        
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[rayCount * 3];
-
 
         vertices[0] = origin;
 
@@ -78,9 +76,9 @@ public class FieldOfView : MonoBehaviour
         fieldMesh.uv = uv;
     }
 
-    public void SetFovDirection(Vector3 fovDirection)
+    public void SetFovDirection(float fovDirection)
     {
-        startAngle = GetAngleFromVectorFloat(fovDirection) - fovAngle / 2f;
+        startAngle = (55 + fovDirection) - fovAngle / 2f;
     }
     
     public void SetOrigin(Vector3 newOrigin)
@@ -103,6 +101,7 @@ public class FieldOfView : MonoBehaviour
     {
         dir = dir.normalized;
         float n = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        //Debug.Log($"{dir.y} {dir.x} {Mathf.Atan2(dir.y, dir.x)}");
         if (n < 0)
             n += 360;
         return n;

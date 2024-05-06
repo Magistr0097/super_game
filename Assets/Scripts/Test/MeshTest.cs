@@ -11,15 +11,20 @@ public class MeshTest : MonoBehaviour
     private Transform pos;
     [SerializeField]
     private FieldOfView fov;
+
+    private AINavigation Navigation;
     
     private void Start()
     {
+        Navigation = GetComponent<AINavigation>();
         fov.SetFovAngle(60);
     }
 
     private void Update()
     {
         fov.SetOrigin(pos.position);
+        
+        fov.SetFovDirection(Navigation.rotation);
     }
 }
 
