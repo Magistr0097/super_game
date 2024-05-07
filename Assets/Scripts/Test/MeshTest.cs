@@ -25,6 +25,8 @@ public class MeshTest : MonoBehaviour
         fov.SetOrigin(pos.position);
         
         fov.SetFovDirection(Navigation.rotation);
+        
+        // Debug.Log(fov.GetFovColliderTag());
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -9,6 +10,7 @@ public class FieldOfView : MonoBehaviour
     private Mesh fieldMesh;
     private MeshFilter meshFilter;
     private Vector3 origin;
+    private RaycastHit2D raycastHit2D;
     
     private float fovAngle;
     private float fovDistance;
@@ -44,10 +46,10 @@ public class FieldOfView : MonoBehaviour
         for (var i = 0; i <= rayCount; i++)
         {
             Vector3 vertex;
-
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), 
+            
+            raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), 
                 fovDistance, collideLayerMask);
-
+            
             if (raycastHit2D.collider == null)
                 vertex = origin + GetVectorFromAngle(angle) * fovDistance;
             
@@ -96,6 +98,12 @@ public class FieldOfView : MonoBehaviour
     {
         fovDistance = distance;
     }
+    
+    [CanBeNull]
+    public string GetFovColliderTag()
+    {
+        return raycastHit2D.collider.tag;
+    }
 
     private static float GetAngleFromVectorFloat(Vector3 dir)
     {
@@ -112,5 +120,4 @@ public class FieldOfView : MonoBehaviour
         var angleRad = angle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
-
 }
