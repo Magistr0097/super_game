@@ -6,8 +6,14 @@ using UnityEngine.AI;
 public class AINavigation : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject target;
+    public GameObject priorTarget;
+    public GameObject[] way;
     public float rotation;
+    public float sleepConst = 2;
+    private float timeCounter = 2;
+    private int wayIndex = 0;
+    private Vector3 dest;
+    private bool disableAgent = false;
     NavMeshAgent agent;
     void Start()
     {
@@ -19,10 +25,40 @@ public class AINavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var dest = target.transform.position;
-        var self = transform.position;
-        agent.SetDestination(target.transform.position);
-        rotation = GetAngleFromVectorFloat(dest - self);
+        if (timeCounter >= sleepConst)
+        {
+            agent.enabled = true;
+            if (priorTarget == null)
+            {
+                if (Vector3.Distance(transform.position, way[wayIndex].transform.position) < 2)
+                {
+                    wayIndex = (wayIndex + 1) % way.Length;
+                    disableAgent = true;
+                    timeCounter = 0;
+                }
+
+                agent.speed = 2.5f;
+                dest = way[wayIndex].transform.position;
+            }
+            else
+            {
+                agent.speed = 4;
+                dest = priorTarget.transform.position;
+            }
+
+            agent.SetDestination(dest);
+            if (disableAgent)
+            {
+                agent.enabled = false;
+                disableAgent = false;
+            }
+            if (agent.enabled)
+                rotation = GetAngleFromVectorFloat(dest - transform.position);
+        }
+        else if(priorTarget != null)
+            timeCounter = sleepConst;
+        else
+            timeCounter += Time.deltaTime;
     }
 
     private static float GetAngleFromVectorFloat(Vector3 dir)
