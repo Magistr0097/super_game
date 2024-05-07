@@ -76,6 +76,7 @@ public class FieldOfView : MonoBehaviour
         fieldMesh.vertices = vertices;
         fieldMesh.triangles = triangles;
         fieldMesh.uv = uv;
+        fieldMesh.bounds = new Bounds(origin, Vector3.one * 1000f);
     }
 
     public void SetFovDirection(float fovDirection)
