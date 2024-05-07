@@ -8,6 +8,8 @@ public class AINavigation : MonoBehaviour
     // Start is called before the first frame update
     public GameObject priorTarget;
     public GameObject[] way;
+
+    public Animator animator;
     public float rotation;
     public float sleepConst = 2;
     private float timeCounter = 2;
@@ -25,6 +27,10 @@ public class AINavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var velocity = agent.velocity;
+        animator.SetFloat("Horizontal", velocity.x);
+        animator.SetFloat("Vertical", velocity.y);
+        
         if (timeCounter >= sleepConst)
         {
             agent.enabled = true;
