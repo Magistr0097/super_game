@@ -31,7 +31,7 @@ public class AINavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var velocity = agent.velocity;
+        var velocity = agent.velocity.normalized;
         animator.SetFloat("Horizontal", velocity.x);
         animator.SetFloat("Vertical", velocity.y);
         
