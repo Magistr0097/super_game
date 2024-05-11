@@ -23,10 +23,12 @@ public class MeshTest : MonoBehaviour
     private void Update()
     {
         fov.SetOrigin(pos.position);
-        
         fov.SetFovDirection(Navigation.rotation);
-        
-        // Debug.Log(fov.GetFovColliderTag());
+    }
+
+    public bool IsPlayerVisible()
+    {
+        return fov.IsPlayerVisible();
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -11,6 +12,7 @@ public class FieldOfView : MonoBehaviour
     private MeshFilter meshFilter;
     private Vector3 origin;
     private RaycastHit2D raycastHit2D;
+    private bool isPlayerVisible;
     
     private float fovAngle;
     private float fovDistance;
@@ -43,6 +45,8 @@ public class FieldOfView : MonoBehaviour
         var vertexIndex = 1;
         var triangleIndex = 0;
 
+        isPlayerVisible = false;
+        
         for (var i = 0; i <= rayCount; i++)
         {
             Vector3 vertex;
@@ -50,11 +54,14 @@ public class FieldOfView : MonoBehaviour
             raycastHit2D = Physics2D.Raycast(origin, GetVectorFromAngle(angle), 
                 fovDistance, collideLayerMask);
             
-            if (raycastHit2D.collider == null)
+            if (raycastHit2D.collider.IsUnityNull())
                 vertex = origin + GetVectorFromAngle(angle) * fovDistance;
-            
             else
+            {
                 vertex = raycastHit2D.point;
+                isPlayerVisible = raycastHit2D.collider.tag == "Player" || isPlayerVisible;
+            }
+                
             
 
             vertices[vertexIndex] = vertex;
@@ -100,10 +107,9 @@ public class FieldOfView : MonoBehaviour
         fovDistance = distance;
     }
     
-    [CanBeNull]
-    public string GetFovColliderTag()
+    public bool IsPlayerVisible()
     {
-        return raycastHit2D.collider.tag;
+        return isPlayerVisible;
     }
 
     private static float GetAngleFromVectorFloat(Vector3 dir)

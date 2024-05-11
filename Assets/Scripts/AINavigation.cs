@@ -12,9 +12,12 @@ public class AINavigation : MonoBehaviour
     public Animator animator;
     public float rotation;
     public float sleepConst = 2;
+
+    private MeshTest mesh;
     private float timeCounter = 2;
     private int wayIndex = 0;
     private Vector3 dest;
+    private Vector3? playerPos;
     private bool disableAgent = false;
     NavMeshAgent agent;
     void Start()
@@ -22,6 +25,7 @@ public class AINavigation : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        mesh = GetComponent<MeshTest>();
     }
 
     // Update is called once per frame
@@ -33,10 +37,26 @@ public class AINavigation : MonoBehaviour
         
         if (timeCounter >= sleepConst)
         {
+            if (mesh.IsPlayerVisible())
+                playerPos = priorTarget.transform.position;
+            
             agent.enabled = true;
-            if (priorTarget == null)
+            if (playerPos != null)
             {
-                if (Vector3.Distance(transform.position, way[wayIndex].transform.position) < 2)
+                agent.speed = 6;
+                dest = playerPos.Value;
+                
+                if (Vector3.Distance(transform.position, dest) < 2)
+                {
+                    playerPos = null;
+                    disableAgent = true;
+                    timeCounter = 0;
+                }
+            }
+            else
+            {
+                dest = way[wayIndex].transform.position;
+                if (Vector3.Distance(transform.position, dest) < 2)
                 {
                     wayIndex = (wayIndex + 1) % way.Length;
                     disableAgent = true;
@@ -44,12 +64,6 @@ public class AINavigation : MonoBehaviour
                 }
 
                 agent.speed = 2.5f;
-                dest = way[wayIndex].transform.position;
-            }
-            else
-            {
-                agent.speed = 4;
-                dest = priorTarget.transform.position;
             }
 
             agent.SetDestination(dest);
@@ -61,7 +75,7 @@ public class AINavigation : MonoBehaviour
             if (agent.enabled)
                 rotation = GetAngleFromVectorFloat(dest - transform.position);
         }
-        else if(priorTarget != null)
+        else if (mesh.IsPlayerVisible())
             timeCounter = sleepConst;
         else
             timeCounter += Time.deltaTime;
