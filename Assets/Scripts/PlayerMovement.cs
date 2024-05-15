@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    
+    public GameObject gameOver; //find way to delete it
+
     private readonly float speed = 5f;
     private Rigidbody2D rb;
     private Animator animator;
@@ -21,17 +24,28 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         movementAxisHorizontal = Input.GetAxis("Horizontal");
         movementAxisVertical = Input.GetAxis("Vertical");
+
         animator.SetFloat(DirectionHorizontal, movementAxisHorizontal);
         animator.SetFloat(DirectionVertical, movementAxisVertical);
+
+        var movement = new Vector2(movementAxisHorizontal, movementAxisVertical);
+        rb.velocity = movement * speed;
     }
 
-    private void FixedUpdate()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        rb.position += new Vector2(movementAxisHorizontal, movementAxisVertical) * (speed * Time.deltaTime);
+        if (collision.gameObject.tag == "Enemy")
+            GameOver();
+    }
+
+    void GameOver()
+    {
+        gameOver.transform.position = gameObject.transform.position;
+        gameOver.SetActive(true);
+        Time.timeScale = 0f;
     }
 }

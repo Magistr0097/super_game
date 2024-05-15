@@ -103314,6 +103314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58d592595ff3cb4a96dcfd86123a3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
 --- !u!212 &1711112969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103375,7 +103376,7 @@ Transform:
   m_GameObject: {fileID: 1711112967}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.69, y: 17.17, z: -1}
+  m_LocalPosition: {x: 0, y: -0.2, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -46,7 +46,7 @@ public class AINavigation : MonoBehaviour
                 agent.speed = 6;
                 dest = playerPos.Value;
                 
-                if (Vector3.Distance(transform.position, dest) < 2)
+                if (Vector3.Distance(transform.position, dest) < 1.5)
                 {
                     playerPos = null;
                     disableAgent = true;
@@ -56,7 +56,7 @@ public class AINavigation : MonoBehaviour
             else
             {
                 dest = way[wayIndex].transform.position;
-                if (Vector3.Distance(transform.position, dest) < 2)
+                if (Vector3.Distance(transform.position, dest) < 1.5)
                 {
                     wayIndex = (wayIndex + 1) % way.Length;
                     disableAgent = true;
