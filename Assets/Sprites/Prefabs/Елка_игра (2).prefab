@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5168919543641259264}
   - component: {fileID: -1266204363800794190}
   - component: {fileID: 8994318840870977437}
-  - component: {fileID: 2315816873432911296}
   - component: {fileID: 6836674399631157352}
-  m_Layer: 7
+  - component: {fileID: 8613672138476870252}
+  m_Layer: 3
   m_Name: "\u0415\u043B\u043A\u0430_\u0438\u0433\u0440\u0430 (2)"
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ EdgeCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -556,41 +556,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!70 &2315816873432911296
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3482996362527621494}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.007389784, y: -1.7552476}
-  m_Size: {x: 0.6249566, y: 1.1010218}
-  m_Direction: 0
 --- !u!70 &6836674399631157352
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -623,6 +588,33 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0048861364, y: -2.1219466}
-  m_Size: {x: 1.159722, y: 0.4263144}
+  m_Offset: {x: -0.04, y: 0.06}
+  m_Size: {x: 1.2, y: 0.33}
   m_Direction: 1
+--- !u!50 &8613672138476870252
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3482996362527621494}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
