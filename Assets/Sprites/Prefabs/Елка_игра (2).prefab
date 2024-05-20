@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8994318840870977437}
   - component: {fileID: 6836674399631157352}
   - component: {fileID: 8613672138476870252}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: "\u0415\u043B\u043A\u0430_\u0438\u0433\u0440\u0430 (2)"
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -568,7 +568,7 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -617,4 +617,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
