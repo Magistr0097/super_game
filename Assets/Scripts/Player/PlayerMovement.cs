@@ -9,10 +9,10 @@ public class PlayerMovement : MonoBehaviour
 
     public static PlayerMovement Instance { get; private set; }
     
-    public bool isRightRunning { get; private set; }
-    public bool isLeftRunning { get; private set; }
-    public bool isForwardRunning { get; private set; }
-    public bool isBackwardRunning { get; private set; }
+    public bool IsRightRunning { get; private set; }
+    public bool IsLeftRunning { get; private set; }
+    public bool IsForwardRunning { get; private set; }
+    public bool IsBackwardRunning { get; private set; }
     
     public GameObject gameOver; //find way to delete it
     private readonly float minMovementSpeed = 0.1f;
@@ -35,10 +35,10 @@ public class PlayerMovement : MonoBehaviour
     {
         var moveVector = GameInput.Instance.GetPlayerMovementVector2();
         rb.MovePosition(rb.position + moveVector * (Speed * Time.fixedDeltaTime));
-        isForwardRunning = moveVector.y < -minMovementSpeed;
-        isBackwardRunning = moveVector.y > minMovementSpeed;
-        isRightRunning = moveVector.x > minMovementSpeed;
-        isLeftRunning = moveVector.x < -minMovementSpeed;
+        IsForwardRunning = moveVector.y < -minMovementSpeed;
+        IsBackwardRunning = moveVector.y > minMovementSpeed;
+        IsRightRunning = moveVector.x > minMovementSpeed;
+        IsLeftRunning = moveVector.x < -minMovementSpeed;
     }
     
     private void OnCollisionEnter2D(Collision2D collision)

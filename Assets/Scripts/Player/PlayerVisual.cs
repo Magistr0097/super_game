@@ -15,9 +15,9 @@ public class PlayerVisual : MonoBehaviour
     private void Update()
     {
         var playerMovementInstance = PlayerMovement.Instance;
-        animator.SetBool("isRightRunning", playerMovementInstance.isRightRunning);
-        animator.SetBool("isLeftRunning", playerMovementInstance.isLeftRunning);
-        animator.SetBool("isForwardRunning", playerMovementInstance.isForwardRunning);
-        animator.SetBool("isBackwardRunning", playerMovementInstance.isBackwardRunning);
+        animator.SetBool("isRightRunning", playerMovementInstance.IsRightRunning);
+        animator.SetBool("isLeftRunning", playerMovementInstance.IsLeftRunning);
+        animator.SetBool("isForwardRunning", playerMovementInstance.IsForwardRunning);
+        animator.SetBool("isBackwardRunning", playerMovementInstance.IsBackwardRunning);
     }
 }
