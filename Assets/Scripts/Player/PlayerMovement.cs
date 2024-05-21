@@ -8,22 +8,35 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
 
     public static PlayerMovement Instance { get; private set; }
-    
+    public KeyCode interactionKey;
     public bool IsRightRunning { get; private set; }
     public bool IsLeftRunning { get; private set; }
     public bool IsForwardRunning { get; private set; }
     public bool IsBackwardRunning { get; private set; }
     
     public GameObject gameOver; //find way to delete it
+
+    public GameObject interactionHint;
     private readonly float minMovementSpeed = 0.1f;
     private const float Speed = 5f;
     private Rigidbody2D rb;
+    private GameObject interactionObj;
     
     
     private void Awake()
     {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(interactionKey) && interactionObj != null)
+            {
+                interactionHint.SetActive(false);
+                interactionObj.GetComponent<DialogueStarter>().StartDialogue();
+                interactionObj = null;
+            }  
     }
 
     private void FixedUpdate()
@@ -45,6 +58,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
             GameOver();
+        if (collision.gameObject.CompareTag("Interaction"))
+        {
+            interactionObj = collision.gameObject;
+            interactionHint.SetActive(true);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) 
+    {
+        if (collision.gameObject.CompareTag("Interaction"))
+        {
+            interactionObj = null;
+            interactionHint.SetActive(false);
+        }
     }
 
     private void GameOver()
