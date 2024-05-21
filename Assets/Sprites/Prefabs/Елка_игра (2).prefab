@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8994318840870977437}
   - component: {fileID: 6836674399631157352}
   - component: {fileID: 8613672138476870252}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\u0415\u043B\u043A\u0430_\u0438\u0433\u0440\u0430 (2)"
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3482996362527621494}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
