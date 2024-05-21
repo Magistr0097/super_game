@@ -90,8 +90,9 @@ public class AINavigation : MonoBehaviour
         return n;
     }
 
-    /*public void LoadData(Save.Enemy save)
+    public void LoadData(Save.Enemy save)
     {
         transform.position = new Vector3(save.position.x, save.position.y, save.position.z);
-    }*/
+        rotation = save.rotation;
+    }
 }

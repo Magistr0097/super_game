@@ -53,4 +53,10 @@ public class PlayerMovement : MonoBehaviour
         gameOver.SetActive(true);
         Time.timeScale = 0f;
     }
+
+    public void LoadData(Save.MainPlayer save)
+    {
+        transform.position = new Vector3(save.position.x, save.position.y, save.position.z);
+    }
+
 }
