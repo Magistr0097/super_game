@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public GameObject gameInput;
     public static PlayerMovement Instance { get; private set; }
     public KeyCode interactionKey;
     public bool IsRightRunning { get; private set; }
@@ -65,7 +66,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Interaction"))
+        {
+            gameInput.SetActive(false);
+            interactionObj = collision.gameObject;
+            interactionHint.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) 
     {
         if (collision.gameObject.CompareTag("Interaction"))
         {

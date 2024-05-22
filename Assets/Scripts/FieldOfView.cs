@@ -88,7 +88,7 @@ public class FieldOfView : MonoBehaviour
 
     public void SetFovDirection(float fovDirection)
     {
-        startAngle = (55 + fovDirection) - fovAngle / 2f;
+        startAngle = (100 + fovDirection) - fovAngle / 2f;
     }
     
     public void SetOrigin(Vector3 newOrigin)

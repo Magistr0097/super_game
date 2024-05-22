@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueSystem : MonoBehaviour
 {
+    public GameObject gameInput;
     private string[] lines;
     public float speedText;
     public Text dialogueText;
@@ -54,7 +55,10 @@ public class DialogueSystem : MonoBehaviour
             StartCoroutine(TypeLine());
         }
         else
+        {
+            gameInput.SetActive(true);
             gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator TypeLine()

@@ -9,6 +9,7 @@ TagManager:
   - GameOver
   - Dialogue
   - Interaction
+  - GameInput
   layers:
   - Default
   - TransparentFX

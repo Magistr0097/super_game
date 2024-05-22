@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueStarter : MonoBehaviour
 {
+    public string[] lines;
     private DialogueSystem system;
     void Start()
     {
@@ -12,6 +13,6 @@ public class DialogueStarter : MonoBehaviour
 
     public void StartDialogue()
     {
-        system.StartDialogue(new []{"asdasadadsaf", "afafsafsawd", "ngnfggdsrggsafadfsafdadvvsd"});
+        system.StartDialogue(lines);
     }    
 }

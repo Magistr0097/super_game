@@ -6,11 +6,12 @@ using System;
 public class DialogueKeyWaiting : MonoBehaviour
 {
     public KeyCode keyCode;
+    public GameObject dialogueSystem;
     private DialogueSystem script;
     // Start is called before the first frame update
     void Start()
     {
-        script = GameObject.FindWithTag("Dialogue").GetComponent<DialogueSystem>();
+        script = dialogueSystem.GetComponent<DialogueSystem>();
     }
 
     // Update is called once per frame
