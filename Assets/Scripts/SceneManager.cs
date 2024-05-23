@@ -9,7 +9,6 @@ public class SceneManager : MonoBehaviour
 
     public void Exit()
     {
-        Debug.Log("EXIT!!!");
         Application.Quit();
     }
 }

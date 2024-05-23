@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     private Transform playerPosition;
     private Vector3 newPosition;
     private Vector3 velocity = Vector3.zero;
-    private readonly Vector3 cameraOffset = new(0,0, -10);
+    private readonly Vector3 cameraOffset = new(0, 0.7f, -10);
     
 
     private void Awake()

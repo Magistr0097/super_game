@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1796774456813202753}
   - component: {fileID: 5168919543641259264}
-  - component: {fileID: -1266204363800794190}
   - component: {fileID: 8994318840870977437}
   - component: {fileID: 6836674399631157352}
   - component: {fileID: 8613672138476870252}
@@ -88,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &-1266204363800794190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3482996362527621494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!68 &8994318840870977437
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -588,8 +571,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04, y: 0.06}
-  m_Size: {x: 1.2, y: 0.33}
+  m_Offset: {x: -0.015066797, y: 0.059999995}
+  m_Size: {x: 1.632178, y: 0.33000112}
   m_Direction: 1
 --- !u!50 &8613672138476870252
 Rigidbody2D:

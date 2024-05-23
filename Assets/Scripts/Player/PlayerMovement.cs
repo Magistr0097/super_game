@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject interactionHint;
     private readonly float minMovementSpeed = 0.1f;
-    private const float Speed = 5f;
+    private const float Speed = 7f;
     private Rigidbody2D rb;
     private GameObject interactionObj;
     
