@@ -10,6 +10,8 @@ TagManager:
   - Dialogue
   - Interaction
   - GameInput
+  - Menu
+  - Variables
   layers:
   - Default
   - TransparentFX
