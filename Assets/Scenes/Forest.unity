@@ -106920,7 +106920,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &142730522
 Transform:
   m_ObjectHideFlags: 0
@@ -111380,7 +111380,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &430236389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120095,7 +120095,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &922879629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1796774456813202753, guid: e0ca5276b65e0ba42aab702466d8806b, type: 3}
@@ -126301,6 +126301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveTutorialComplete: 0
   ForestStage: 0
+  RespawnPoints: []
 --- !u!4 &1413167208
 Transform:
   m_ObjectHideFlags: 0
@@ -126310,7 +126311,7 @@ Transform:
   m_GameObject: {fileID: 1413167206}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 447.6238, y: 233.34943, z: -3.6735222}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128185,7 +128186,7 @@ Transform:
   m_GameObject: {fileID: 1596783953}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15849082, y: -0.6966739, z: -1.0402882}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128325,7 +128326,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &1601363092
 Transform:
   m_ObjectHideFlags: 0
@@ -128335,7 +128336,7 @@ Transform:
   m_GameObject: {fileID: 1601363090}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.07, y: 26.09, z: 0}
+  m_LocalPosition: {x: -28.07, y: 25.97, z: 0}
   m_LocalScale: {x: 6.131147, y: 6.131147, z: 6.131147}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130240,7 +130241,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &1725323205
 Transform:
   m_ObjectHideFlags: 0
