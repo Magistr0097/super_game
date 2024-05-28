@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public CameraFollow mainCamera;
     public GameObject gameInput;
     public static PlayerMovement Instance { get; private set; }
     public KeyCode interactionKey;
@@ -28,6 +30,21 @@ public class PlayerMovement : MonoBehaviour
     {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
+        if (!Variables.IsFirstStartGame)
+        {
+            transform.position = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name switch
+            {
+                "Town" => Variables.RespawnPoints[RespawnPositions.OnEnterToTown],
+                "Forest" => Variables.RespawnPoints[RespawnPositions.OnEnterToForest],
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+        else
+        {
+            Variables.IsFirstStartGame = false;
+            transform.position = Variables.RespawnPoints[RespawnPositions.Initial];
+        }
+        mainCamera.CenterOnPlayer();
     }
 
     private void Update()

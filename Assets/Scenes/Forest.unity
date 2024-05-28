@@ -112370,7 +112370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89256d111c00cd4785690365822c56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraStandOffset: 3
   SmoothTime: 0.228
 --- !u!114 &519420034
 MonoBehaviour:
@@ -113506,6 +113505,7 @@ GameObject:
   - component: {fileID: 630828736}
   - component: {fileID: 630828738}
   - component: {fileID: 630828737}
+  - component: {fileID: 630828739}
   m_Layer: 0
   m_Name: Foreground
   m_TagString: Untagged
@@ -116827,6 +116827,42 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!19719996 &630828739
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630828735}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
 --- !u!1001 &633282115
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -126270,53 +126306,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3503732341286170865, guid: cf77355d70dfeda40b1a073b10ba4a63, type: 3}
   m_PrefabInstance: {fileID: 1409195630}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1413167206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1413167208}
-  - component: {fileID: 1413167207}
-  m_Layer: 0
-  m_Name: GlobalVariables
-  m_TagString: Variables
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!114 &1413167207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413167206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75426f3eda4ae6c40b01610efa6d61a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveTutorialComplete: 0
-  ForestStage: 0
-  RespawnPoints: []
---- !u!4 &1413167208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1413167206}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1419780378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129834,6 +129823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58d592595ff3cb4a96dcfd86123a3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 519420033}
   gameInput: {fileID: 1596783953}
   interactionKey: 101
   gameOver: {fileID: 1400934667}
@@ -129847,7 +129837,7 @@ Transform:
   m_GameObject: {fileID: 1711112967}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.14, y: -26.25, z: 0}
+  m_LocalPosition: {x: 21.29, y: -30.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -135951,7 +135941,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 1413167208}
   - {fileID: 630708309}
   - {fileID: 1370404459}
   - {fileID: 1711112970}
@@ -135960,6 +135949,6 @@ SceneRoots:
   - {fileID: 618861076}
   - {fileID: 40096612}
   - {fileID: 1672918453}
-  - {fileID: 239769612}
   - {fileID: 1063234653}
   - {fileID: 548001092}
+  - {fileID: 239769612}

@@ -5,11 +5,11 @@ using UnityEngine;
 public class ActiveTutorialIfVariable : MonoBehaviour
 {
     private int keysCount = 0;
-    private GameObject variables;
+    // private GameObject variables;
     void Start()
     {
-        variables = GameObject.FindWithTag("Variables");
-        if (variables.GetComponent<Variables>().MoveTutorialComplete)
+        // variables = GameObject.FindWithTag("Variables");
+        if (Variables.MoveTutorialComplete)
             gameObject.SetActive(false);
     }
 
@@ -18,7 +18,7 @@ public class ActiveTutorialIfVariable : MonoBehaviour
         keysCount++;
         if (keysCount > 3)
         {
-            variables.GetComponent<Variables>().MoveTutorialComplete = true;
+            Variables.MoveTutorialComplete = true;
         }
     }
 }
