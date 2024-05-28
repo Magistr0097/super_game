@@ -32,12 +32,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(interactionKey) && interactionObj != null)
-            {
-                interactionHint.SetActive(false);
-                interactionObj.GetComponent<DialogueStarter>().StartDialogue();
-                interactionObj = null;
-            }  
+        if (!Input.GetKeyDown(interactionKey) || interactionObj == null) return;
+        gameInput.SetActive(false);
+        IsForwardRunning = false;
+        IsBackwardRunning = false;
+        IsRightRunning = false;
+        IsLeftRunning = false;
+        interactionHint.SetActive(false);
+        interactionObj.GetComponent<DialogueStarter>().StartDialogue();
+        interactionObj = null;
     }
 
     private void FixedUpdate()
@@ -47,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (!gameInput.activeSelf) return;
         var moveVector = GameInput.Instance.GetPlayerMovementVector2();
         rb.MovePosition(rb.position + moveVector * (Speed * Time.fixedDeltaTime));
         IsForwardRunning = moveVector.y < -minMovementSpeed;
@@ -70,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Interaction"))
         {
-            gameInput.SetActive(false);
             interactionObj = collision.gameObject;
             interactionHint.SetActive(true);
         }
