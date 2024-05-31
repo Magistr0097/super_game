@@ -43,6 +43,9 @@ public class SaveLoad : MonoBehaviour
         {
             enemySaves[i].GetComponent<AINavigation>().LoadData(save.enemiesData[i]);
         }
+        Variables.IsFirstStartGame = save.IsFirstStartGame;
+        Variables.MoveTutorialComplete = save.MoveTutorialComplete;
+        Variables.ForestStage = save.ForestStage;
     }
 }
 
@@ -90,6 +93,9 @@ public class Save
 
     public List<Enemy> enemiesData = new List<Enemy>();
     public MainPlayer mainPlayerData = new MainPlayer();
+    public bool IsFirstStartGame = false;
+    public bool MoveTutorialComplete = false;
+    public int ForestStage = 0;
 
     public void SaveMainPlayer(GameObject mainPlayer)
     {
@@ -104,5 +110,12 @@ public class Save
             var rotation = enemy.GetComponent<AINavigation>().rotation;
             enemiesData.Add(new Enemy(position, rotation));
         }
+    }
+
+    public void SaveVars()
+    {
+        IsFirstStartGame = Variables.IsFirstStartGame;
+        MoveTutorialComplete = Variables.MoveTutorialComplete;
+        ForestStage = Variables.ForestStage;
     }
 }
