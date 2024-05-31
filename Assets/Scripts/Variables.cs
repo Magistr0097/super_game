@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public enum RespawnPositions
 {
@@ -10,13 +9,12 @@ public enum RespawnPositions
     OnEnterToTown
 }
 
+
 public class Variables : MonoBehaviour
 {
     public static bool IsFirstStartGame = true;
     public static bool MoveTutorialComplete = false;
     public static int ForestStage = 0;
-    public static bool IsLoaded = false;
-
     public static Dictionary<string, string[]> linesDict = new Dictionary<string, string[]>();
     public static readonly Dictionary<RespawnPositions, Vector3> RespawnPoints = new()
     {

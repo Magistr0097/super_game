@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool IsBackwardRunning { get; private set; }
     
     public GameObject gameOver; //find way to delete it
-    public GameObject saveLoad;
+
     public GameObject interactionHint;
     private readonly float minMovementSpeed = 0.1f;
     private const float Speed = 7f;
@@ -45,15 +45,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Variables.RespawnPoints[RespawnPositions.Initial];
         }
         mainCamera.CenterOnPlayer();
-    }
-
-    private void Start()
-    {
-        if (Variables.IsLoaded)
-        {
-            Variables.IsLoaded = false;
-            saveLoad.GetComponent<SaveLoad>().Load();
-        }
     }
 
     private void Update()

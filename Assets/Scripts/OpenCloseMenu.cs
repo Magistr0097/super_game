@@ -1,16 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OpenCloseMenu : MonoBehaviour
 {
     public KeyCode keyCode;
-    private GameObject menu;
-    private bool menuOpen;
+    private GameObject[] menu;
+    private bool menuOpen = false;
     void Start()
     {
-        menu = GameObject.FindGameObjectWithTag("Menu");
+        menu = GameObject.FindGameObjectsWithTag("Menu");
         CloseMenu();
     }
-    
+
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(keyCode) && menuOpen)
@@ -23,13 +26,15 @@ public class OpenCloseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         menuOpen = true;
-        menu.SetActive(true);
+        foreach (var menuObj in menu)
+            menuObj.SetActive(true);
     }
 
     public void CloseMenu()
     {
         Time.timeScale = 1f;
         menuOpen = false;
-        menu.SetActive(false);
+        foreach (var menuObj in menu)
+            menuObj.SetActive(false);
     }
 }
