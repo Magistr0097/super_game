@@ -129713,10 +129713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be230102f78dd504eb4297298f0001d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneManager: {fileID: 548001091}
   enemySaves: []
   mainPlayerSave: {fileID: 1711112967}
-  camera: {fileID: 519420028}
 --- !u!4 &1672918453
 Transform:
   m_ObjectHideFlags: 0
@@ -130147,7 +130145,6 @@ MonoBehaviour:
   gameInput: {fileID: 1596783953}
   interactionKey: 101
   gameOver: {fileID: 1400934667}
-  saveLoad: {fileID: 1672918451}
   interactionHint: {fileID: 430478020}
 --- !u!4 &1711112970
 Transform:
