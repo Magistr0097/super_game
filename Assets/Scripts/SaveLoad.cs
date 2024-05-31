@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class SaveLoad : MonoBehaviour
 {
-    string filePath;
-
+    
+    public SceneManager sceneManager;
     public GameObject[] enemySaves;
     public GameObject mainPlayerSave;
+    public GameObject camera;
+    private string filePath;
+    private static Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}};
 
     private void Start()
     {
@@ -24,6 +28,8 @@ public class SaveLoad : MonoBehaviour
         Save save = new Save();
         save.SaveMainPlayer(mainPlayerSave);
         save.SaveEnemies(enemySaves);
+        save.SaveVars();
+        save.Scene = gameObject.scene.name;
         bf.Serialize(fs, save);
         fs.Close();
     }
@@ -37,6 +43,12 @@ public class SaveLoad : MonoBehaviour
         FileStream fs = new FileStream(filePath, FileMode.Open);
         Save save = (Save)bf.Deserialize(fs);
         fs.Close();
+        if (gameObject.scene.name != save.Scene)
+        {
+            Variables.IsLoaded = true;
+            sceneManager.ChangeScene(sceneIndexFromName[save.Scene]);
+            return;
+        }
 
         mainPlayerSave.GetComponent<PlayerMovement>().LoadData(save.mainPlayerData);
         for (var i = 0; i < enemySaves.Length; i++)
@@ -46,6 +58,8 @@ public class SaveLoad : MonoBehaviour
         Variables.IsFirstStartGame = save.IsFirstStartGame;
         Variables.MoveTutorialComplete = save.MoveTutorialComplete;
         Variables.ForestStage = save.ForestStage;
+
+        camera.GetComponent<CameraFollow>().CenterOnPlayer();
     }
 }
 
@@ -96,6 +110,7 @@ public class Save
     public bool IsFirstStartGame = false;
     public bool MoveTutorialComplete = false;
     public int ForestStage = 0;
+    public string Scene = "";
 
     public void SaveMainPlayer(GameObject mainPlayer)
     {
