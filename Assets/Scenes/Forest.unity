@@ -113332,9 +113332,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1.0983845}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.3480185
 --- !u!4 &618861076
 Transform:
   m_ObjectHideFlags: 0
@@ -113344,11 +113344,11 @@ Transform:
   m_GameObject: {fileID: 618861073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12, y: -22.55, z: 0}
-  m_LocalScale: {x: 2.8718984, y: 2.8718984, z: 2.8718984}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1370404459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &627051088
 PrefabInstance:
@@ -125627,7 +125627,8 @@ Transform:
   m_LocalPosition: {x: 11.9507, y: -23.1805, z: 0}
   m_LocalScale: {x: 1.1646, y: 1.1646, z: 1.1646}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 618861076}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1370404460
@@ -136060,7 +136061,6 @@ SceneRoots:
   - {fileID: 1711112970}
   - {fileID: 1339600576}
   - {fileID: 1596783955}
-  - {fileID: 618861076}
   - {fileID: 40096612}
   - {fileID: 1672918453}
   - {fileID: 1063234653}

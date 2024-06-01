@@ -11,7 +11,8 @@ public class SaveLoad : MonoBehaviour
     public GameObject mainPlayerSave;
     public GameObject camera;
     private string filePath;
-    private static Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}};
+    private static readonly Dictionary<string, int> SceneIndexFromName = new Dictionary<string, int>
+        { {"MenuScene", 0}, {"Forest", 1}, {"Town", 2} };
 
     private void Start()
     {
@@ -44,7 +45,7 @@ public class SaveLoad : MonoBehaviour
         if (gameObject.scene.name != save.Scene)
         {
             Variables.IsLoaded = true;
-            sceneManager.ChangeScene(sceneIndexFromName[save.Scene]);
+            sceneManager.ChangeScene(SceneIndexFromName[save.Scene]);
             return;
         }
 
