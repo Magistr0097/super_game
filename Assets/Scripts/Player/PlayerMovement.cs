@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,15 +20,23 @@ public class PlayerMovement : MonoBehaviour
     public bool IsBackwardRunning { get; private set; }
     
     public GameObject gameOver; //find way to delete it
-
+    public GameObject circle;
     public GameObject interactionHint;
+    public GameObject Delay;
+    public GameObject Menu;
+    public GameObject Dialogue;
+    private Text delayText;
     private readonly float minMovementSpeed = 0.1f;
     private const float Speed = 7f;
     private Rigidbody2D rb;
     private GameObject interactionObj;
+    private float teleportDelay = 10f;
+    private bool mouseClicked = false;
 
     private void Start()
     {
+        delayText = Delay.GetComponent<Text>();
+
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
         if (Variables.IsLoaded)
@@ -54,6 +63,44 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!Menu.activeSelf && !Dialogue.activeSelf)
+        {
+            var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (teleportDelay >= 10)
+                Delay.GetComponent<AutoDisable>().Disable();
+            delayText.text = $"Перезарядка {String.Format("{0:F1}", 10 - teleportDelay)} секунд";
+            
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (teleportDelay >= 10)
+                {
+                    mouseClicked = true;
+                    circle.SetActive(true);
+                    Delay.GetComponent<AutoDisable>().Disable();
+                    Time.timeScale = 0.5f;
+                }
+                else
+                {
+                    Delay.SetActive(true);
+                }
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                if (teleportDelay >= 10 && mouseClicked)
+                {
+                    circle.SetActive(false);
+                    Time.timeScale = 1f;
+                    if (IsMouseNearPlayer(mousePos))
+                    {
+                        rb.transform.position = new Vector3(mousePos.x, mousePos.y, rb.transform.position.z);
+                        teleportDelay = 0f;
+                    }
+                }
+                mouseClicked = false;
+            }
+            teleportDelay += Time.deltaTime;
+        }
+
         if (!Input.GetKeyDown(interactionKey) || interactionObj == null) return;
         gameInput.SetActive(false);
         IsForwardRunning = false;
@@ -108,6 +155,12 @@ public class PlayerMovement : MonoBehaviour
             interactionObj = null;
             interactionHint.SetActive(false);
         }
+    }
+
+    private bool IsMouseNearPlayer(Vector3 mousePosition)
+    {
+        return Math.Sqrt((rb.position.x - mousePosition.x) * (rb.position.x - mousePosition.x) +
+            (rb.position.y - mousePosition.y) * (rb.position.y - mousePosition.y)) < 5;
     }
 
     private void GameOver()

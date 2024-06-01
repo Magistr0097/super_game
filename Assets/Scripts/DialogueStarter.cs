@@ -5,15 +5,19 @@ using UnityEngine;
 public class DialogueStarter : MonoBehaviour
 {
     private DialogueSystem system;
+    private GameObject[] enemies;
     // private Variables variables;
     void Start()
     {
         // variables = GameObject.FindWithTag("Variables").GetComponent<Variables>();
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         system = GameObject.FindWithTag("Dialogue").GetComponent<DialogueSystem>();
     }
 
     public void StartDialogue()
     {
+        foreach(var enemy in enemies)
+            enemy.GetComponent<AINavigation>().Disable();
         switch (Variables.ForestStage)        
         {
             case 0:
