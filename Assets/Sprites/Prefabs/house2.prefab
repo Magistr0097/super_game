@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2093065228889066864}
   - component: {fileID: 7953600527117368913}
   - component: {fileID: 7427176650639830648}
+  - component: {fileID: 7223830189223073508}
+  - component: {fileID: 3844897046561240725}
   m_Layer: 0
   m_Name: house2
   m_TagString: Untagged
@@ -130,3 +132,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3985752, y: 0.3571663}
   m_EdgeRadius: 0
+--- !u!114 &7223830189223073508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536344791808157069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &3844897046561240725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8536344791808157069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa0352a4d56abd42ad2fc69deb72448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 0.40255976, y: 0.36488217, z: 4}
+  m_Center: {x: -0.0066373944, y: 0.11838594, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
