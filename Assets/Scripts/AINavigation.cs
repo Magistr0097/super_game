@@ -19,7 +19,8 @@ public class AINavigation : MonoBehaviour
     private Vector3 dest;
     private Vector3? playerPos;
     private bool disableAgent = false;
-    NavMeshAgent agent;
+    private bool disabled = false;
+    private NavMeshAgent agent;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -31,6 +32,9 @@ public class AINavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (disabled) return;
+        
+        
         var velocity = agent.velocity.normalized;
         animator.SetFloat("Horizontal", velocity.x);
         animator.SetFloat("Vertical", velocity.y);
@@ -79,6 +83,20 @@ public class AINavigation : MonoBehaviour
             timeCounter = sleepConst;
         else
             timeCounter += Time.deltaTime;
+    }
+
+    public void Disable()
+    {
+        disabled = true;
+        agent.enabled = false;
+        animator.SetFloat("Horizontal", 0);
+        animator.SetFloat("Vertical", 0);
+    }
+
+    public void Enable()
+    {
+        disabled = false;
+        agent.enabled = true;
     }
 
     private static float GetAngleFromVectorFloat(Vector3 dir)

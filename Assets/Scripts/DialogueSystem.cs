@@ -11,9 +11,11 @@ public class DialogueSystem : MonoBehaviour
     public Text dialogueText;
     public GameObject continueText;
     public int index;
+    private GameObject[] enemies;
 
     void Start()
     {
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         gameObject.SetActive(false);
     }
 
@@ -58,6 +60,8 @@ public class DialogueSystem : MonoBehaviour
         {
             gameInput.SetActive(true);
             gameObject.SetActive(false);
+            foreach(var enemy in enemies)
+                enemy.GetComponent<AINavigation>().Enable();
         }
     }
 
