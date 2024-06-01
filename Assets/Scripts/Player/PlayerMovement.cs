@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public CameraFollow mainCamera;
     public GameObject gameInput;
+    public GameObject saveLoad;
     public static PlayerMovement Instance { get; private set; }
     public KeyCode interactionKey;
     public bool IsRightRunning { get; private set; }
@@ -24,13 +25,17 @@ public class PlayerMovement : MonoBehaviour
     private const float Speed = 7f;
     private Rigidbody2D rb;
     private GameObject interactionObj;
-    
-    
-    private void Awake()
+
+    private void Start()
     {
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
-        if (!Variables.IsFirstStartGame)
+        if (Variables.IsLoaded)
+        {
+            Variables.IsLoaded = false;
+            saveLoad.GetComponent<SaveLoad>().Load();
+        }
+        else if (!Variables.IsFirstStartGame)
         {
             transform.position = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name switch
             {

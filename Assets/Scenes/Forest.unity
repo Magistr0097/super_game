@@ -113477,12 +113477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8053f2c1da73874ebb48cd3b57e5cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lines:
-  - "\u041F\u0440\u0438\u0432\u0435\u0442, \u0443\u0447\u0435\u043D\u0438\u043A"
-  - "\u0412 \u043B\u0435\u0441\u0443 \u043C\u043D\u043E\u0433\u043E \u0441\u0442\u0440\u0430\u0436\u043D\u0438\u043A\u043E\u0432"
-  - "\u0411\u0443\u0434\u044C \u043E\u0441\u0442\u043E\u0440\u043E\u0436\u043D\u0435\u0435,
-    \u0435\u0441\u043B\u0438 \u0442\u0435\u0431\u044F \u0441\u0445\u0432\u0430\u0442\u044F\u0442,
-    \u0442\u0435\u0431\u044F \u043F\u043E\u0432\u0435\u0441\u044F\u0442"
 --- !u!58 &618861075
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -129897,8 +129891,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be230102f78dd504eb4297298f0001d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneManager: {fileID: 548001091}
   enemySaves: []
   mainPlayerSave: {fileID: 1711112967}
+  camera: {fileID: 519420028}
 --- !u!4 &1672918453
 Transform:
   m_ObjectHideFlags: 0
@@ -130327,6 +130323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 519420033}
   gameInput: {fileID: 1596783953}
+  saveLoad: {fileID: 1672918451}
   interactionKey: 101
   gameOver: {fileID: 1400934667}
   interactionHint: {fileID: 430478020}
