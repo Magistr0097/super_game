@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DialogueStarter : MonoBehaviour
 {
-    public string[] lines;
     private DialogueSystem system;
     // private Variables variables;
     void Start()
