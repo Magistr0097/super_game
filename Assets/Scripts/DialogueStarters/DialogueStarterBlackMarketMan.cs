@@ -32,6 +32,9 @@ public class DialogueStarterBlackMarketMan : MonoBehaviour, IDialogueStarter
             case 6:
                 system.StartDialogue(Variables.linesDict["BlackManFirstQuestRepeat"]);
                 break;
+            case 7:
+                system.StartDialogue(Variables.linesDict[""]);
+                break;
             default:
                 GameInput.SetActive(true);
                 break;
