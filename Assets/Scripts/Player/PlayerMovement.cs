@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject Delay;
     public GameObject Menu;
     public GameObject Dialogue;
-    private Text delayText;
+    [SerializeField] private Text delayText;
     private readonly float minMovementSpeed = 0.1f;
     private const float Speed = 7f;
     private Rigidbody2D rb;
@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private bool mouseClicked = false;
 
     private void Start()
-    {
-        delayText = Delay.GetComponent<Text>();
+    { 
+        // delayText = Delay.GetComponent<Text>();
 
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
             var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if (teleportDelay >= 10)
                 Delay.GetComponent<AutoDisable>().Disable();
-            delayText.text = $"Перезарядка {String.Format("{0:F1}", 10 - teleportDelay)} секунд";
+            delayText.text = $"Перезарядка {10 - teleportDelay:F1} секунд";
             
             if (Input.GetMouseButtonDown(0))
             {

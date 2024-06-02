@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class ReadLines : MonoBehaviour
 {
-    
-    // private Variables variables;
     void Start()
     {
-        // variables = GameObject.FindWithTag("Variables").GetComponent<Variables>();
-
         var path = System.IO.Directory.GetCurrentDirectory() + "\\Dialogues.csv";
         var fileData = System.IO.File.ReadAllText(path)
             .Split(new string[] { ";\"", "\"" }, System.StringSplitOptions.RemoveEmptyEntries);
