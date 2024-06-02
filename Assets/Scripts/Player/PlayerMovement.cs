@@ -39,10 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
-        if (Variables.IsLoaded)
+        if (Variables.LoadedSave != null)
         {
-            Variables.IsLoaded = false;
-            saveLoad.GetComponent<SaveLoad>().Load();
+            saveLoad.GetComponent<SaveLoad>().Load(Variables.LoadedSave);
+            Variables.LoadedSave = null;
         }
         else if (!Variables.IsFirstStartGame)
         {

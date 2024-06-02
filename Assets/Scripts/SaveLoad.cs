@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System;
+using System.Linq;
+using UnityEngine.UI;
 
 public class SaveLoad : MonoBehaviour
 {
@@ -10,44 +13,44 @@ public class SaveLoad : MonoBehaviour
     public GameObject[] enemySaves;
     public GameObject mainPlayerSave;
     public GameObject camera;
+    public GameObject UICanvas;
     private string filePath;
+    private string screenShotPath;
     private static Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}};
 
     private void Start()
     {
-        filePath = Application.persistentDataPath + "/save.gamesave";
+        filePath = Application.persistentDataPath + "/Saves";
+        screenShotPath = Application.persistentDataPath + "/SavePictures";
         enemySaves = GameObject.FindGameObjectsWithTag("Enemy");
     }
     
     public void Save()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream fs = new FileStream(filePath, FileMode.Create);
+        var time = DateTime.Now;
+        FileStream fs = new FileStream(filePath + $"/save-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.gamesave", FileMode.Create);
         Save save = new Save();
         save.SaveMainPlayer(mainPlayerSave);
         save.SaveEnemies(enemySaves);
         save.SaveVars();
         save.Scene = gameObject.scene.name;
+        save.Name = $"save {String.Format("{0:dd.MM.yyyy HH:mm:ss}", time)}";
+        save.ScreenShotPath = screenShotPath + $"/saveScreenshot-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.png";
+        ScreenCapture.CaptureScreenshot(screenShotPath + $"/saveScreenshot-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.png");
         bf.Serialize(fs, save);
         fs.Close();
     }
 
-    public void Load()
+    public void Load(Save save)
     {
-        if (!File.Exists(filePath))
-            return;
-
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream fs = new FileStream(filePath, FileMode.Open);
-        Save save = (Save)bf.Deserialize(fs);
-        fs.Close();
         if (gameObject.scene.name != save.Scene)
         {
-            Variables.IsLoaded = true;
+            Variables.LoadedSave = save;
             sceneManager.ChangeScene(sceneIndexFromName[save.Scene]);
             return;
         }
-
+        
         mainPlayerSave.GetComponent<PlayerMovement>().LoadData(save.mainPlayerData);
         for (var i = 0; i < enemySaves.Length; i++)
         {
@@ -60,6 +63,8 @@ public class SaveLoad : MonoBehaviour
         camera.GetComponent<CameraFollow>().CenterOnPlayer();
     }
 }
+
+
 
 
 
@@ -109,6 +114,8 @@ public class Save
     public bool MoveTutorialComplete = false;
     public int ForestStage = 0;
     public string Scene = "";
+    public string ScreenShotPath = "";
+    public string Name = "";
 
     public void SaveMainPlayer(GameObject mainPlayer)
     {
