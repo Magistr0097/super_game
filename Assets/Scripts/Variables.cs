@@ -15,6 +15,8 @@ public class Variables : MonoBehaviour
     public static bool IsFirstStartGame = true;
     public static bool MoveTutorialComplete = false;
     public static int ForestStage = 0;
+    public static int TownStage = 0;
+    public static int RoomStage = 0;
     public static Save LoadedSave = null;
 
     public static Dictionary<string, string[]> linesDict = new Dictionary<string, string[]>();

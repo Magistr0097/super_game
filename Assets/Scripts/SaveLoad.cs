@@ -16,7 +16,7 @@ public class SaveLoad : MonoBehaviour
     public GameObject UICanvas;
     private string filePath;
     private string screenShotPath;
-    private static Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}};
+    private static Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}, {"Room", 3}};
 
     private void Start()
     {
@@ -65,6 +65,8 @@ public class SaveLoad : MonoBehaviour
         Variables.IsFirstStartGame = save.IsFirstStartGame;
         Variables.MoveTutorialComplete = save.MoveTutorialComplete;
         Variables.ForestStage = save.ForestStage;
+        Variables.TownStage = save.TownStage;
+        Variables.RoomStage = save.RoomStage;
 
         camera.GetComponent<CameraFollow>().CenterOnPlayer();
     }
@@ -119,6 +121,8 @@ public class Save
     public bool IsFirstStartGame = false;
     public bool MoveTutorialComplete = false;
     public int ForestStage = 0;
+    public int TownStage = 0;
+    public int RoomStage = 0;
     public string Scene = "";
     public string ScreenShotPath = "";
     public string Name = "";
@@ -143,5 +147,7 @@ public class Save
         IsFirstStartGame = Variables.IsFirstStartGame;
         MoveTutorialComplete = Variables.MoveTutorialComplete;
         ForestStage = Variables.ForestStage;
+        TownStage = Variables.TownStage;
+        RoomStage = Variables.RoomStage;
     }
 }
