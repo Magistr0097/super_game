@@ -6,7 +6,7 @@ public class DialogueStarterHunter : MonoBehaviour, DialogueStarter
 {
     private DialogueSystem system;
     private GameObject[] enemies;
-    void Start()
+    void Awake()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         system = GameObject.FindWithTag("Dialogue").GetComponent<DialogueSystem>();
