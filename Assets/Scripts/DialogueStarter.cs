@@ -20,6 +20,7 @@ public class DialogueStarter : MonoBehaviour
         {
             case 0:
                 system.StartDialogue(Variables.linesDict["HunterFirst"]);
+                system.StartDialogue(Variables.linesDict["HunterSecond"]);
                 Variables.ForestStage++;
                 break;
             case 1:
