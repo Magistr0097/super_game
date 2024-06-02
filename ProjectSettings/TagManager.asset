@@ -12,6 +12,8 @@ TagManager:
   - GameInput
   - Menu
   - Variables
+  - SaveLoad
+  - LoadButton
   layers:
   - Default
   - TransparentFX

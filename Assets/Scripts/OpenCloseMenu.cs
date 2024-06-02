@@ -30,6 +30,7 @@ public class OpenCloseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         menuOpen = false;
+        gameObject.GetComponent<ActivateObj>().DisActivate();
         menu.SetActive(false);
     }
 }
