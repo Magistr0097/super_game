@@ -80,37 +80,40 @@ public class PlayerMovement : MonoBehaviour
                 Delay.GetComponent<AutoDisable>().Disable();
             delayText.text = $"Перезарядка {10 - teleportDelay:F1} секунд";
 
-            if (Input.GetMouseButtonDown(0))
+            if (Variables.ForestStage >= 2)
             {
-                if (teleportDelay >= 10)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    mouseClicked = true;
-                    circle.SetActive(true);
-                    Delay.GetComponent<AutoDisable>().Disable();
-                    Time.timeScale = 0.5f;
-                }
-                else
-                {
-                    Delay.SetActive(true);
-                }
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                if (teleportDelay >= 10 && mouseClicked)
-                {
-                    circle.SetActive(false);
-                    Time.timeScale = 1f;
-                    if (IsMouseNearPlayer(mousePos))
+                    if (teleportDelay >= 10)
                     {
-                        rb.transform.position = new Vector3(mousePos.x, mousePos.y, rb.transform.position.z);
-                        teleportDelay = 0f;
+                        mouseClicked = true;
+                        circle.SetActive(true);
+                        Delay.GetComponent<AutoDisable>().Disable();
+                        Time.timeScale = 0.5f;
+                    }
+                    else
+                    {
+                        Delay.SetActive(true);
                     }
                 }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    if (teleportDelay >= 10 && mouseClicked)
+                    {
+                        circle.SetActive(false);
+                        Time.timeScale = 1f;
+                        if (IsMouseNearPlayer(mousePos))
+                        {
+                            rb.transform.position = new Vector3(mousePos.x, mousePos.y, rb.transform.position.z);
+                            teleportDelay = 0f;
+                        }
+                    }
 
-                mouseClicked = false;
+                    mouseClicked = false;
+                }
+
+                teleportDelay += Time.deltaTime;
             }
-
-            teleportDelay += Time.deltaTime;
         }
 
         if (!Input.GetKeyDown(interactionKey) || interactionObj == null) return;

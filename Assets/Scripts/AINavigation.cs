@@ -47,7 +47,7 @@ public class AINavigation : MonoBehaviour
             agent.enabled = true;
             if (playerPos != null)
             {
-                agent.speed = 6;
+                agent.speed = 8;
                 dest = playerPos.Value;
                 
                 if (Vector3.Distance(transform.position, dest) < 1.5)
