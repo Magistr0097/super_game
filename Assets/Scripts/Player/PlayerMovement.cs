@@ -158,6 +158,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Interaction"))
+        {
+            interactionObj = null;
+            interactionHint.SetActive(false);
+        }
+    }
+
     private bool IsMouseNearPlayer(Vector3 mousePosition)
     {
         return Math.Sqrt((rb.position.x - mousePosition.x) * (rb.position.x - mousePosition.x) +
