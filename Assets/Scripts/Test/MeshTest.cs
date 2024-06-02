@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class MeshTest : MonoBehaviour
 {
+    public int angle = 60;
     [SerializeField]
     private Transform pos;
     [SerializeField]
@@ -17,7 +18,7 @@ public class MeshTest : MonoBehaviour
     private void Start()
     {
         Navigation = GetComponent<AINavigation>();
-        fov.SetFovAngle(60);
+        fov.SetFovAngle(angle);
     }
 
     private void Update()
