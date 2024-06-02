@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueStarterHunterQuest : MonoBehaviour, DialogueStarter
+public class DialogueStarterHunterQuest : MonoBehaviour, IDialogueStarter
 {
     public GameObject GameInput;
     public GameObject Skin;

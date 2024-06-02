@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool IsLeftRunning { get; private set; }
     public bool IsForwardRunning { get; private set; }
     public bool IsBackwardRunning { get; private set; }
-    
+
     public GameObject gameOver; //find way to delete it
     public GameObject circle;
     public GameObject interactionHint;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     private bool mouseClicked = false;
 
     private void Start()
-    { 
+    {
         // delayText = Delay.GetComponent<Text>();
 
         Instance = this;
@@ -51,15 +51,15 @@ public class PlayerMovement : MonoBehaviour
                 case "Town":
                     if (Variables.ForestStage <= 1)
                         transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToTownBeginning];
-                    else 
+                    else
                         transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToTown];
-                break;
+                    break;
                 case "Forest":
                     if (Variables.ForestStage == 2)
                         transform.position = Variables.RespawnPoints[RespawnPositions.OnExitFromRoom];
                     else
                         transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToForest];
-                break;
+                    break;
             }
         }
         else
@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
             Variables.IsFirstStartGame = false;
             transform.position = Variables.RespawnPoints[RespawnPositions.Initial];
         }
+
         mainCamera.CenterOnPlayer();
     }
 
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             if (teleportDelay >= 10)
                 Delay.GetComponent<AutoDisable>().Disable();
             delayText.text = $"Перезарядка {10 - teleportDelay:F1} секунд";
-            
+
             if (Input.GetMouseButtonDown(0))
             {
                 if (teleportDelay >= 10)
@@ -105,8 +106,10 @@ public class PlayerMovement : MonoBehaviour
                         teleportDelay = 0f;
                     }
                 }
+
                 mouseClicked = false;
             }
+
             teleportDelay += Time.deltaTime;
         }
 
@@ -117,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
         IsRightRunning = false;
         IsLeftRunning = false;
         interactionHint.SetActive(false);
-        interactionObj.GetComponent<DialogueStarter>().StartDialogue();
+        interactionObj.GetComponent<IDialogueStarter>().StartDialogue();
         interactionObj = null;
     }
 
@@ -136,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
         IsRightRunning = moveVector.x > minMovementSpeed;
         IsLeftRunning = moveVector.x < -minMovementSpeed;
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
@@ -155,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
     private bool IsMouseNearPlayer(Vector3 mousePosition)
     {
         return Math.Sqrt((rb.position.x - mousePosition.x) * (rb.position.x - mousePosition.x) +
-            (rb.position.y - mousePosition.y) * (rb.position.y - mousePosition.y)) < 5;
+                         (rb.position.y - mousePosition.y) * (rb.position.y - mousePosition.y)) < 5;
     }
 
     private void GameOver()

@@ -16,7 +16,7 @@ public class SaveLoad : MonoBehaviour
     public GameObject UICanvas;
     private string filePath;
     private string screenShotPath;
-    private static Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}, {"Room", 3}};
+    private static readonly Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}, {"Room", 3}};
 
     private void Start()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueStarterHunter : MonoBehaviour, DialogueStarter
+public class DialogueStarterHunter : MonoBehaviour, IDialogueStarter
 {
     public GameObject TPTutorial;
     public DialogueSystem system;

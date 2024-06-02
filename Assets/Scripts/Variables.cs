@@ -22,7 +22,7 @@ public class Variables : MonoBehaviour
     public static int RoomStage = 0;
     public static Save LoadedSave = null;
 
-    public static Dictionary<string, string[]> linesDict = new Dictionary<string, string[]>();
+    public static Dictionary<string, string[]> linesDict = new();
     public static readonly Dictionary<RespawnPositions, Vector3> RespawnPoints = new()
     {
         { RespawnPositions.Initial, new Vector3(6.43f, -25.4f)},

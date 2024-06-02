@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueStarterBlackMarketMan : MonoBehaviour, DialogueStarter
+public class DialogueStarterBlackMarketMan : MonoBehaviour, IDialogueStarter
 {
     public DialogueSystem system;
     public GameObject GameInput;

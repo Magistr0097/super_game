@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueStarterDarkPact : MonoBehaviour, DialogueStarter
+public class DialogueStarterDarkPact : MonoBehaviour, IDialogueStarter
 {
     public DialogueSystem system;
     public GameObject GameInput;
