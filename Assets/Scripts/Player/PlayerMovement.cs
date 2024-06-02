@@ -46,12 +46,21 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (!Variables.IsFirstStartGame)
         {
-            transform.position = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name switch
+            switch (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
             {
-                "Town" => Variables.RespawnPoints[RespawnPositions.OnEnterToTown],
-                "Forest" => Variables.RespawnPoints[RespawnPositions.OnEnterToForest],
-                _ => throw new ArgumentOutOfRangeException()
-            };
+                case "Town":
+                    if (Variables.ForestStage <= 1)
+                        transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToTownBeginning];
+                    else 
+                        transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToTown];
+                break;
+                case "Forest":
+                    if (Variables.ForestStage == 2)
+                        transform.position = Variables.RespawnPoints[RespawnPositions.OnExitFromRoom];
+                    else
+                        transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToForest];
+                break;
+            }
         }
         else
         {

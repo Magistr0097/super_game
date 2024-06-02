@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DialogueStarterHunter : MonoBehaviour, DialogueStarter
 {
-    private DialogueSystem system;
+    public GameObject TPTutorial;
+    public DialogueSystem system;
     private GameObject[] enemies;
     void Awake()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        system = GameObject.FindWithTag("Dialogue").GetComponent<DialogueSystem>();
     }
 
     public void StartDialogue()
@@ -20,10 +20,15 @@ public class DialogueStarterHunter : MonoBehaviour, DialogueStarter
         {
             case 0:
                 system.StartDialogue(Variables.linesDict["HunterFirst"]);
-                Variables.ForestStage++;
+                Variables.ForestStage = 1;
                 break;
             case 1:
                 system.StartDialogue(Variables.linesDict["HunterSecond"]);
+                break;
+            case 2:
+                system.StartDialogue(Variables.linesDict["HunterTutorial"]);
+                Variables.TPTutorialComplete = true;
+                TPTutorial.SetActive(true);
                 break;
         }
     }    

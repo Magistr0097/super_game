@@ -64,6 +64,7 @@ public class SaveLoad : MonoBehaviour
         }
         Variables.IsFirstStartGame = save.IsFirstStartGame;
         Variables.MoveTutorialComplete = save.MoveTutorialComplete;
+        Variables.TPTutorialComplete = save.TPTutorialComplete;
         Variables.ForestStage = save.ForestStage;
         Variables.TownStage = save.TownStage;
         Variables.RoomStage = save.RoomStage;
@@ -120,6 +121,7 @@ public class Save
     public MainPlayer mainPlayerData = new MainPlayer();
     public bool IsFirstStartGame = false;
     public bool MoveTutorialComplete = false;
+    public bool TPTutorialComplete = false;
     public int ForestStage = 0;
     public int TownStage = 0;
     public int RoomStage = 0;
@@ -146,6 +148,7 @@ public class Save
     {
         IsFirstStartGame = Variables.IsFirstStartGame;
         MoveTutorialComplete = Variables.MoveTutorialComplete;
+        TPTutorialComplete = Variables.TPTutorialComplete;
         ForestStage = Variables.ForestStage;
         TownStage = Variables.TownStage;
         RoomStage = Variables.RoomStage;

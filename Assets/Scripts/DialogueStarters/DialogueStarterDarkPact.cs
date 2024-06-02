@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class DialogueStarterDarkPact : MonoBehaviour, DialogueStarter
 {
-    private DialogueSystem system;
+    public DialogueSystem system;
     private GameObject[] enemies;
-    void Start()
+    void Awake()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        system = GameObject.FindWithTag("Dialogue").GetComponent<DialogueSystem>();
     }
 
     public void StartDialogue()
@@ -20,7 +19,9 @@ public class DialogueStarterDarkPact : MonoBehaviour, DialogueStarter
         {
             case 0:
                 system.StartDialogue(Variables.linesDict["DarkPactFound"]);
-                Variables.RoomStage++;
+                Variables.RoomStage = 1;
+                Variables.TownStage = 1;
+                Variables.ForestStage = 2;
                 break;
             case 1:
                 system.StartDialogue(Variables.linesDict["DarkPactNoTime"]);
