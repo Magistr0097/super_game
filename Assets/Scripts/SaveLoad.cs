@@ -13,7 +13,6 @@ public class SaveLoad : MonoBehaviour
     public GameObject[] enemySaves;
     public GameObject mainPlayerSave;
     public GameObject camera;
-    public GameObject UICanvas;
     private string filePath;
     private string screenShotPath;
     private static readonly Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}, {"Room", 3}};
@@ -29,6 +28,7 @@ public class SaveLoad : MonoBehaviour
             System.IO.Directory.CreateDirectory(screenShotPath);
 
         enemySaves = GameObject.FindGameObjectsWithTag("Enemy");
+        AutoSave();
     }
     
     public void Save()
@@ -44,6 +44,23 @@ public class SaveLoad : MonoBehaviour
         save.Name = $"save {String.Format("{0:dd.MM.yyyy HH:mm:ss}", time)}";
         save.ScreenShotPath = screenShotPath + $"/saveScreenshot-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.png";
         ScreenCapture.CaptureScreenshot(screenShotPath + $"/saveScreenshot-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.png");
+        bf.Serialize(fs, save);
+        fs.Close();
+    }
+
+    public void AutoSave()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        var time = DateTime.Now;
+        FileStream fs = new FileStream(filePath + $"/Autosave-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.gamesave", FileMode.Create);
+        Save save = new Save();
+        save.SaveMainPlayer(mainPlayerSave);
+        save.SaveEnemies(enemySaves);
+        save.SaveVars();
+        save.Scene = gameObject.scene.name;
+        save.Name = $"Autosave {String.Format("{0:dd.MM.yyyy HH:mm:ss}", time)}";
+        save.ScreenShotPath = screenShotPath + $"/AutosaveScreenshot-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.png";
+        ScreenCapture.CaptureScreenshot(screenShotPath + $"/AutosaveScreenshot-{time.Year}-{time.Month}-{time.Day}-{time.Hour}-{time.Minute}-{time.Second}.png");
         bf.Serialize(fs, save);
         fs.Close();
     }

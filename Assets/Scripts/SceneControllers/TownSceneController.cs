@@ -5,6 +5,7 @@ using UnityEngine;
 public class TownSceneController : MonoBehaviour
 {
     public GameObject Enemies;
+    public GameObject save;
 
     void Update()
     {

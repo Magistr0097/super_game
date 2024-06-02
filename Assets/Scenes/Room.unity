@@ -2310,7 +2310,6 @@ MonoBehaviour:
   enemySaves: []
   mainPlayerSave: {fileID: 716004292}
   camera: {fileID: 0}
-  UICanvas: {fileID: 2131074928}
 --- !u!114 &487367391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2974,6 +2973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Boss: {fileID: 674557617}
+  save: {fileID: 487367389}
 --- !u!4 &630615960
 Transform:
   m_ObjectHideFlags: 0
