@@ -6,7 +6,7 @@ public class DialogueStarter : MonoBehaviour
 {
     private DialogueSystem system;
     private GameObject[] enemies;
-    void Start()
+    void Awake()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         system = GameObject.FindWithTag("Dialogue").GetComponent<DialogueSystem>();
@@ -20,7 +20,6 @@ public class DialogueStarter : MonoBehaviour
         {
             case 0:
                 system.StartDialogue(Variables.linesDict["HunterFirst"]);
-                system.StartDialogue(Variables.linesDict["HunterSecond"]);
                 Variables.ForestStage++;
                 break;
             case 1:
