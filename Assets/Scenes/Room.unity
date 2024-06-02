@@ -5354,6 +5354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   system: {fileID: 2134069093}
+  GameInput: {fileID: 810346650}
 --- !u!1 &1108689444
 GameObject:
   m_ObjectHideFlags: 0

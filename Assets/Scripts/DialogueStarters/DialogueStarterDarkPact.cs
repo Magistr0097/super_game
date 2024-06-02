@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueStarterDarkPact : MonoBehaviour, DialogueStarter
 {
     public DialogueSystem system;
+    public GameObject GameInput;
     private GameObject[] enemies;
     void Awake()
     {
@@ -25,6 +26,9 @@ public class DialogueStarterDarkPact : MonoBehaviour, DialogueStarter
                 break;
             case 1:
                 system.StartDialogue(Variables.linesDict["DarkPactNoTime"]);
+                break;
+            default:
+                GameInput.SetActive(true);
                 break;
         }
     } 
