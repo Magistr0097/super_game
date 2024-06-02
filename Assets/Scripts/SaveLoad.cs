@@ -21,7 +21,13 @@ public class SaveLoad : MonoBehaviour
     private void Start()
     {
         filePath = Application.persistentDataPath + "/Saves";
+        if(!System.IO.Directory.Exists(filePath))
+            System.IO.Directory.CreateDirectory(filePath);
+            
         screenShotPath = Application.persistentDataPath + "/SavePictures";
+        if(!System.IO.Directory.Exists(screenShotPath))
+            System.IO.Directory.CreateDirectory(screenShotPath);
+
         enemySaves = GameObject.FindGameObjectsWithTag("Enemy");
     }
     
