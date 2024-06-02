@@ -10,5 +10,7 @@ public class TownSceneController : MonoBehaviour
     {
         if (Variables.TownStage < 1)
             Enemies.SetActive(false);
+        else
+            Enemies.SetActive(true);
     }
 }

@@ -141,11 +141,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
             GameOver();
-        if (collision.gameObject.CompareTag("Interaction"))
-        {
-            interactionObj = collision.gameObject;
-            interactionHint.SetActive(true);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -154,15 +149,6 @@ public class PlayerMovement : MonoBehaviour
         {
             interactionObj = collision.gameObject;
             interactionHint.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) 
-    {
-        if (collision.gameObject.CompareTag("Interaction"))
-        {
-            interactionObj = null;
-            interactionHint.SetActive(false);
         }
     }
 
