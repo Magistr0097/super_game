@@ -165,7 +165,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void GameOver()
     {
-        gameOver.transform.position = gameObject.transform.position;
         gameOver.SetActive(true);
         Time.timeScale = 0f;
     }
