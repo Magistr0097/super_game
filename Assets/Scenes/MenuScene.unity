@@ -1229,6 +1229,7 @@ MonoBehaviour:
   enemySaves: []
   mainPlayerSave: {fileID: 677167012}
   camera: {fileID: 1355441731}
+  gameOver: {fileID: 677167012}
 --- !u!4 &515917953
 Transform:
   m_ObjectHideFlags: 0
