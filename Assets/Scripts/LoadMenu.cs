@@ -21,10 +21,10 @@ public class LoadMenu : MonoBehaviour
     }
     public void GetSaves()
     {
-        string[] filePaths = Directory.GetFiles(Application.persistentDataPath + "/Saves");
+        var filePaths = Directory.GetFiles(Application.persistentDataPath + "/Saves");
         if (filePaths.Length <= 0) return;
         filePaths = TakeDate(filePaths).OrderByDescending(x => x.Item2).Select(x => x.Item1).ToArray();
-        BinaryFormatter bf = new BinaryFormatter();
+        var bf = new BinaryFormatter();
         var temp = new List<Save>();
         foreach (var path in filePaths)
         {
@@ -42,14 +42,14 @@ public class LoadMenu : MonoBehaviour
         SetSaves();
     }
 
-    public void SetSaves()
+    private void SetSaves()
     {
         for (var i = 0; i < 3; i++)
         {
             if (i+index < saves.Length)
             {
                 loadButtons[i].SetActive(true);
-                loadButtons[i].GetComponent<LoadSaveButton>().SetSave(saves[i+index]);
+                loadButtons[i].GetComponent<LoadSaveButton>().SetSave(saves[i + index]);
             }
             else
                 loadButtons[i].SetActive(false);

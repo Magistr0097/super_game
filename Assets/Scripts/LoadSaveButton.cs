@@ -29,17 +29,11 @@ public class LoadSaveButton : MonoBehaviour
         SaveLoad.GetComponent<SaveLoad>().Load(save);
     }
 
-    private Texture2D LoadTexture(string FilePath)
+    private Texture2D LoadTexture(string filePath)
     {
-        Texture2D Tex2D;
-        byte[] FileData;
- 
-        if (File.Exists(FilePath)){
-        FileData = File.ReadAllBytes(FilePath);
-        Tex2D = new Texture2D(2, 2);
-        if (Tex2D.LoadImage(FileData))
-            return Tex2D;
-        }  
-        return null;
-   }
+        if (!File.Exists(filePath)) return null;
+        var fileData = File.ReadAllBytes(filePath);
+        var tex2D = new Texture2D(2, 2);
+        return tex2D.LoadImage(fileData) ? tex2D : null;
+    }
 }
