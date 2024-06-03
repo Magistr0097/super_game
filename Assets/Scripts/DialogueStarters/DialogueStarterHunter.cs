@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueStarterHunter : MonoBehaviour, IDialogueStarter
 {
     public GameObject TPTutorial;
+    public GameObject TPTutorial2;
     public DialogueSystem system;
     public GameObject GameInput;
     public GameObject[] Portrets;
@@ -34,6 +35,7 @@ public class DialogueStarterHunter : MonoBehaviour, IDialogueStarter
                 system.StartDialogue(Variables.linesDict["HunterTutorial"]);
                 Variables.TPTutorialComplete = true;
                 TPTutorial.SetActive(true);
+                TPTutorial2.SetActive(true);
                 Variables.ForestStage = 3;
                 break;
             case 3:
