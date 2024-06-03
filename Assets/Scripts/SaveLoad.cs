@@ -15,7 +15,8 @@ public class SaveLoad : MonoBehaviour
     public GameObject camera;
     private string filePath;
     private string screenShotPath;
-    private static readonly Dictionary<string, int> sceneIndexFromName = new Dictionary<string, int>{{"MenuScene", 0}, {"Forest", 1}, {"Town", 2}, {"Room", 3}};
+    private static readonly Dictionary<string, int> SceneIndexFromName = new Dictionary<string, int> 
+        { {"MenuScene", 0}, {"Forest", 1}, {"Town", 2}, {"Room", 3} };
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class SaveLoad : MonoBehaviour
             System.IO.Directory.CreateDirectory(screenShotPath);
 
         enemySaves = GameObject.FindGameObjectsWithTag("Enemy");
+        if (camera.scene.name == "SceneMenu") return;
         AutoSave();
     }
     
@@ -70,7 +72,7 @@ public class SaveLoad : MonoBehaviour
         if (gameObject.scene.name != save.Scene)
         {
             Variables.LoadedSave = save;
-            sceneManager.ChangeScene(sceneIndexFromName[save.Scene]);
+            sceneManager.ChangeScene(SceneIndexFromName[save.Scene]);
             return;
         }
         

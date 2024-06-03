@@ -31,12 +31,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject interactionObj;
     private float teleportDelay = 10f;
-    private bool mouseClicked = false;
+    private bool mouseClicked;
 
     private void Start()
     {
-        // delayText = Delay.GetComponent<Text>();
-
+        
         Instance = this;
         rb = GetComponent<Rigidbody2D>();
         if (Variables.LoadedSave != null)
@@ -49,16 +48,14 @@ public class PlayerMovement : MonoBehaviour
             switch (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name)
             {
                 case "Town":
-                    if (Variables.ForestStage <= 1)
-                        transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToTownBeginning];
-                    else
-                        transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToTown];
+                    transform.position = Variables.ForestStage <= 1 ? 
+                        Variables.RespawnPoints[RespawnPositions.OnEnterToTownBeginning] 
+                        : Variables.RespawnPoints[RespawnPositions.OnEnterToTown];
                     break;
                 case "Forest":
-                    if (Variables.ForestStage == 2)
-                        transform.position = Variables.RespawnPoints[RespawnPositions.OnExitFromRoom];
-                    else
-                        transform.position = Variables.RespawnPoints[RespawnPositions.OnEnterToForest];
+                    transform.position = Variables.ForestStage == 2 ? 
+                        Variables.RespawnPoints[RespawnPositions.OnExitFromRoom] 
+                        : Variables.RespawnPoints[RespawnPositions.OnEnterToForest];
                     break;
             }
         }
@@ -92,9 +89,7 @@ public class PlayerMovement : MonoBehaviour
                         Time.timeScale = 0.5f;
                     }
                     else
-                    {
                         Delay.SetActive(true);
-                    }
                 }
                 else if (Input.GetMouseButtonUp(0))
                 {
@@ -111,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
 
                     mouseClicked = false;
                 }
-
                 teleportDelay += Time.deltaTime;
             }
         }
@@ -151,20 +145,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Interaction"))
-        {
-            interactionObj = collision.gameObject;
-            interactionHint.SetActive(true);
-        }
+        if (!collision.gameObject.CompareTag("Interaction")) return;
+        interactionObj = collision.gameObject;
+        interactionHint.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Interaction"))
-        {
-            interactionObj = null;
-            interactionHint.SetActive(false);
-        }
+        if (!collision.gameObject.CompareTag("Interaction")) return;
+        interactionObj = null;
+        interactionHint.SetActive(false);
     }
 
     private bool IsMouseNearPlayer(Vector3 mousePosition)
