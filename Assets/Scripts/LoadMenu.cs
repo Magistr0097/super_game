@@ -29,7 +29,12 @@ public class LoadMenu : MonoBehaviour
         foreach (var path in filePaths)
         {
             FileStream fs = new FileStream(path, FileMode.Open);
-            temp.Add((Save)bf.Deserialize(fs));
+            try
+            {
+                temp.Add((Save)bf.Deserialize(fs));
+            }
+            catch
+            {}
             fs.Close();
         }
         saves = temp.ToArray();
