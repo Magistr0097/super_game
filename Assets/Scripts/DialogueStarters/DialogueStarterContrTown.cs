@@ -24,6 +24,7 @@ public class DialogueStarterContrTown : MonoBehaviour, IDialogueStarter
         {
             case 8:
                 system.StartDialogue(Variables.linesDict["BlueManQuest"]);
+                Variables.TownStage = 123;
                 break;
             default:
                 GameInput.SetActive(true);

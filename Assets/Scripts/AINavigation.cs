@@ -21,6 +21,7 @@ public class AINavigation : MonoBehaviour
     private bool disableAgent = false;
     private bool disabled = false;
     private NavMeshAgent agent;
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -33,7 +34,6 @@ public class AINavigation : MonoBehaviour
     void Update()
     {
         if (disabled) return;
-        
         
         var velocity = agent.velocity.normalized;
         animator.SetFloat("Horizontal", velocity.x);
@@ -112,5 +112,6 @@ public class AINavigation : MonoBehaviour
     {
         transform.position = new Vector3(save.position.x, save.position.y, save.position.z);
         rotation = save.rotation;
+        playerPos = null;
     }
 }

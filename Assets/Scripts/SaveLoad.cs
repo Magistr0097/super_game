@@ -13,6 +13,7 @@ public class SaveLoad : MonoBehaviour
     public GameObject[] enemySaves;
     public GameObject mainPlayerSave;
     public GameObject camera;
+    public GameObject gameOver;
     private string filePath;
     private string screenShotPath;
     private static readonly Dictionary<string, int> SceneIndexFromName = new Dictionary<string, int> 
@@ -75,7 +76,7 @@ public class SaveLoad : MonoBehaviour
             sceneManager.ChangeScene(SceneIndexFromName[save.Scene]);
             return;
         }
-        
+        gameOver.SetActive(false);
         mainPlayerSave.GetComponent<PlayerMovement>().LoadData(save.mainPlayerData);
         for (var i = 0; i < enemySaves.Length; i++)
         {

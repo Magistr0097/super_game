@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
                 Delay.GetComponent<AutoDisable>().Disable();
             delayText.text = $"Перезарядка {10 - teleportDelay:F1} секунд";
 
-            if (Variables.ForestStage >= 2)
+            if (Variables.ForestStage >= 2 && gameOver.activeSelf != true)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
